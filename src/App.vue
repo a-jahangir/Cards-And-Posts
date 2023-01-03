@@ -1,12 +1,12 @@
 <template>
-  <h1>a.jahangir</h1>
-  <router-view/>
+  <Header />
+  <router-view></router-view>
 </template>
 
-<script>
-
+<script setup>
+import Header from './components/Header.vue'
 </script>
 
-<style>
+<style scoped>
 
 </style>
