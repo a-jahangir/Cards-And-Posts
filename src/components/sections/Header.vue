@@ -11,13 +11,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <router-link class="nav-link" to="/">Home</router-link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Users</a>
+                            <router-link class="nav-link" to="/users">Users</router-link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Posts</a>
+                            <router-link class="nav-link" to="/posts">Posts</router-link>
                         </li>
                     </ul>
                 </div>
@@ -30,5 +30,8 @@
 </script>
 
 <style scoped>
-
+.router-link-active {
+    color: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.9);
+}
 </style>
