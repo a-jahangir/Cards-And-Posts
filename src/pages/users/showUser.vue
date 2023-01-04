@@ -1,15 +1,14 @@
 <template>
-  <div v-if="route.params.id == undefined" class="container mt-5">
+  <div class="container mt-5">
     <div class="row g-3">
       <div v-if="loading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <div v-else class="col-md-4" v-for="user in users" :key="user.id">
+      <div v-else class="col-md-4">
         <CardView :user="user" />
       </div>
     </div>
   </div>
-  <router-view v-else></router-view>
 </template>
 
 <script setup>
@@ -18,14 +17,14 @@ import { ref } from 'vue'
 import CardView from '@/components/users/CardView.vue'
 import { useRoute } from 'vue-router'
 
-const users = ref([])
+const user = ref({})
 const loading = ref(true)
 const route = useRoute()
 
 axios
-  .get('https://jsonplaceholder.typicode.com/users')
+  .get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
   .then(function (response) {
-    users.value = response.data
+    user.value = response.data
     loading.value = false
   })
   .catch(function (error) {
