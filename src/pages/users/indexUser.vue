@@ -1,26 +1,19 @@
 <template>
-  <div v-if="route.params.id == undefined" class="container mt-5">
-    <div class="row g-3">
-      <div v-if="loading" class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <div v-else class="col-md-4" v-for="user in users" :key="user.id">
-        <CardView :user="user" />
-      </div>
-    </div>
+  <div v-if="loading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
   </div>
-  <router-view v-else></router-view>
+  <div v-else class="col-md-4" v-for="user in users" :key="user.id">
+    <CardView :user="user" />
+  </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
 import CardView from '@/components/users/CardView.vue'
-import { useRoute } from 'vue-router'
 
 const users = ref([])
 const loading = ref(true)
-const route = useRoute()
 
 axios
   .get('https://jsonplaceholder.typicode.com/users')

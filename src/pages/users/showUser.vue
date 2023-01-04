@@ -1,13 +1,9 @@
 <template>
-  <div class="container mt-5">
-    <div class="row g-3">
-      <div v-if="loading" class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <div v-else class="col-md-4">
-        <CardView :user="user" />
-      </div>
-    </div>
+  <div v-if="loading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div v-else class="col-md-4">
+    <CardView :user="user" />
   </div>
 </template>
 
