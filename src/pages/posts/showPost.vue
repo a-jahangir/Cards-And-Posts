@@ -4,13 +4,13 @@
   </div>
   <div v-else class="col-md-6">
     <div class="card">
-    <router-link class="nav-link card-header" :to="{ name: 'postId', params: { id: post.id } }">{{ post.title }}</router-link>
+    <p class="nav-link card-header">{{ post.title }}</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"> {{ post.body }} </li>
     </ul>
     <div class="card-footer">
       <router-link class="btn btn-sm btn-danger" :to="{ name: 'posts' }">Delete</router-link>
-      <router-link class="btn btn-sm btn-dark ms-4" :to="{ name: 'posts' }">Edit</router-link>
+      <router-link class="btn btn-sm btn-dark ms-4" :to="{ name: 'editPost' , params: { id: post.id } }">Edit</router-link>
     </div>
   </div>
   </div>
