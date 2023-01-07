@@ -3,14 +3,18 @@
     <span class="visually-hidden">Loading...</span>
   </div>
   <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
-    <postCardView :post="post" />
+    <div class="card">
+    <router-link class="nav-link card-header" :to="{ name: 'postId', params: { id: post.id } }">{{ post.title }}</router-link>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> {{ post.body }} </li>
+    </ul>
+  </div>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import postCardView from '@/components/posts/postCardView.vue'
 
 const posts = ref([])
 const loading = ref(true)
