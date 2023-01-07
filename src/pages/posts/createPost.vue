@@ -12,14 +12,18 @@
                 <textarea class="form-control" v-model.lazy.trim="form.body"></textarea>
                 <div class="form-text text-danger">{{ form.bodyError }}</div>
             </div>
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <button type="submit" class="btn btn-dark" :disabled="loading">
+              <div v-if="loading" class="spinner-border spinner-border-sm" role="status"></div>
+              Create Post
+            </button>
         </form>
     </div>
 </template>
 
 <script setup>
+import Swal from 'sweetalert2'
 import axios from 'axios'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 const form = reactive({
   title: '',
@@ -27,6 +31,7 @@ const form = reactive({
   body: '',
   bodyError: ''
 })
+const loading = ref(false)
 
 function validate () {
   if (form.title === '') {
@@ -45,13 +50,20 @@ function validate () {
 }
 
 function createPost () {
+  loading.value = true
   axios.post('https://jsonplaceholder.typicode.com/posts', {
     title: form.title,
     body: form.body,
     userId: 1
   })
-    .then(function (response) {
-      console.log(response.data)
+    .then(function () {
+      loading.value = false
+      Swal.fire({
+        title: 'Thanks!',
+        text: 'Post Created Successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
     })
     .catch(function (error) {
       console.log(error)
