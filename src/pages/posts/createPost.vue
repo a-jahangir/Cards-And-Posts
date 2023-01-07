@@ -57,6 +57,8 @@ function createPost () {
     userId: 1
   })
     .then(function () {
+      form.title = ''
+      form.body = ''
       loading.value = false
       Swal.fire({
         title: 'Thanks!',
