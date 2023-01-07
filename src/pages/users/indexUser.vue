@@ -3,14 +3,14 @@
     <span class="visually-hidden">Loading...</span>
   </div>
   <div v-else class="col-md-4" v-for="user in users" :key="user.id">
-    <CardView :user="user" />
+    <userCardView :user="user" />
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import CardView from '@/components/users/CardView.vue'
+import userCardView from '@/components/users/userCardView.vue'
 
 const users = ref([])
 const loading = ref(true)

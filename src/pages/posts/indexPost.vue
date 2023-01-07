@@ -2,25 +2,23 @@
   <div v-if="loading" class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-  <div v-else class="col-md-4">
-    <userCardView :user="user" />
+  <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
+    <postCardView :post="post" />
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import userCardView from '@/components/users/userCardView.vue'
-import { useRoute } from 'vue-router'
+import postCardView from '@/components/posts/postCardView.vue'
 
-const user = ref({})
+const posts = ref([])
 const loading = ref(true)
-const route = useRoute()
 
 axios
-  .get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
+  .get('https://jsonplaceholder.typicode.com/posts')
   .then(function (response) {
-    user.value = response.data
+    posts.value = response.data
     loading.value = false
   })
   .catch(function (error) {
