@@ -6,11 +6,12 @@ import templateUsers from './pages/users/templateUser.vue'
 import indexPost from './pages/posts/indexPost.vue'
 import showPost from './pages/posts/showPost.vue'
 import templatePosts from './pages/posts/templatePost.vue'
+import createPost from './pages/posts/createPost.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/', name: 'home', component: Home },
   {
-    path: '/users',
+    path: '/Users',
     name: 'templateUsers',
     component: templateUsers,
     children: [
@@ -19,12 +20,13 @@ const routes = [
     ]
   },
   {
-    path: '/posts',
+    path: '/Posts',
     name: 'templatePosts',
     component: templatePosts,
     children: [
       { path: '', name: 'posts', component: indexPost },
-      { path: ':id', name: 'postId', component: showPost }
+      { path: ':id', name: 'postId', component: showPost },
+      { path: 'Create', name: 'createPost', component: createPost }
     ]
   }
 ]
