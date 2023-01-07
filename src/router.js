@@ -7,7 +7,7 @@ import indexPost from './pages/posts/indexPost.vue'
 import showPost from './pages/posts/showPost.vue'
 import templatePosts from './pages/posts/templatePost.vue'
 import createPost from './pages/posts/createPost.vue'
-import editPost from './pages/posts/editePost.vue'
+import editPost from './pages/posts/editPost.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
